@@ -40,7 +40,7 @@ EOF
     repo_dir=$(basename $repo_url .git)
     git clone --depth 1 $repo_url
     # gsutil rsync into the gcs bucket dags/git dir
-    gsutil -m rsync -x "\\.git\\/.*$" -d -r $repo_dir gs://$GCS_BUCKET/dags/git
+    gsutil -m rsync -x "\\.git\\/.*$" -d -r $repo_dir gs://$GCS_BUCKET/dags
 """.format(private_key=private_key, repo_url=repo_url)
 
 t1 = BashOperator(
